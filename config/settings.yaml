@@ -1,0 +1,38 @@
+app:
+  name: "CloudSentinel"
+  version: "0.1.0-phase1"
+  default_provider: "synthetic_demo"
+  provenance_labels:
+    synthetic_demo: "Synthetic Demo"
+    imported_events: "Imported Events"
+    aws_readonly: "AWS Read-only Scan"
+
+paths:
+  demo_resources: "data/demo/resources.json"
+  demo_events: "data/demo/cloudtrail_events.json"
+  sqlite_db: "data/cloudsentinel.db"
+
+risk_model:
+  heuristic_notice: "Project-specific illustrative heuristic (0-100), not compromise probability."
+  max_impact: 40
+  max_exposure: 30
+  max_privilege: 30
+  severity_thresholds:
+    Critical: 80
+    High: 60
+    Medium: 35
+    Low: 0
+
+rules:
+  enabled:
+    - NET-001
+    - NET-002
+    - NET-003
+    - S3-001
+    - IAM-001
+    - IAM-002
+    - LOG-001
+    - AUTH-001
+    - KEY-001
+  auth_failed_login_threshold: 3
+  auth_window_minutes: 15

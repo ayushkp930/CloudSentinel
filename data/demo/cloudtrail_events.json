@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "source": "synthetic_demo",
+  "events": [
+    {
+      "event_id": "evt-demo-001",
+      "event_time": "2026-10-16T09:10:00Z",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "actor": "iam-user-contractor-01",
+      "source_ip": "198.51.100.42",
+      "region": "us-east-1",
+      "status": "Failure",
+      "details": {"errorMessage": "Failed authentication"}
+    },
+    {
+      "event_id": "evt-demo-002",
+      "event_time": "2026-10-16T09:12:00Z",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "actor": "iam-user-contractor-01",
+      "source_ip": "198.51.100.42",
+      "region": "us-east-1",
+      "status": "Failure",
+      "details": {"errorMessage": "Failed authentication"}
+    },
+    {
+      "event_id": "evt-demo-003",
+      "event_time": "2026-10-16T09:14:00Z",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "actor": "iam-user-contractor-01",
+      "source_ip": "198.51.100.42",
+      "region": "us-east-1",
+      "status": "Failure",
+      "details": {"errorMessage": "Failed authentication"}
+    },
+    {
+      "event_id": "evt-demo-004",
+      "event_time": "2026-10-16T09:20:00Z",
+      "event_name": "StopLogging",
+      "event_source": "cloudtrail.amazonaws.com",
+      "actor": "assumed-role-ops-admin",
+      "source_ip": "203.0.113.19",
+      "region": "us-east-1",
+      "status": "Success",
+      "details": {"trailName": "org-management-trail"}
+    },
+    {
+      "event_id": "evt-demo-005",
+      "event_time": "2026-10-16T09:25:00Z",
+      "event_name": "CreateAccessKey",
+      "event_source": "iam.amazonaws.com",
+      "actor": "iam-user-dev-02",
+      "source_ip": "203.0.113.88",
+      "region": "us-east-1",
+      "status": "Success",
+      "details": {"targetUser": "iam-user-service-deployer"}
+    },
+    {
+      "event_id": "evt-demo-006",
+      "event_time": "2026-10-16T09:30:00Z",
+      "event_name": "AttachUserPolicy",
+      "event_source": "iam.amazonaws.com",
+      "actor": "iam-user-dev-02",
+      "source_ip": "203.0.113.88",
+      "region": "us-east-1",
+      "status": "Success",
+      "details": {
+        "targetUser": "iam-user-temp- contractor",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      }
+    }
+  ]
+}

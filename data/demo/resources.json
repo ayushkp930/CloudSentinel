@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "source": "synthetic_demo",
+  "collected_at": "2026-10-16T10:00:00Z",
+  "account_id": "000000000000-demo",
+  "region": "us-east-1",
+  "resources": [
+    {
+      "resource_id": "sg-demo-001",
+      "resource_type": "aws.ec2.security_group",
+      "name": "web-and-ssh-open-sg",
+      "region": "us-east-1",
+      "configuration": {
+        "inbound_permissions": [
+          {
+            "protocol": "tcp",
+            "from_port": 22,
+            "to_port": 22,
+            "ipv4_ranges": ["0.0.0.0/0"],
+            "ipv6_ranges": []
+          }
+        ]
+      }
+    },
+    {
+      "resource_id": "sg-demo-002",
+      "resource_type": "aws.ec2.security_group",
+      "name": "rdp-and-ipv6-admin-sg",
+      "region": "us-east-1",
+      "configuration": {
+        "inbound_permissions": [
+          {
+            "protocol": "tcp",
+            "from_port": 3389,
+            "to_port": 3389,
+            "ipv4_ranges": ["0.0.0.0/0"],
+            "ipv6_ranges": ["::/0"]
+          }
+        ]
+      }
+    },
+    {
+      "resource_id": "sg-demo-safe-003",
+      "resource_type": "aws.ec2.security_group",
+      "name": "internal-bastion-sg",
+      "region": "us-east-1",
+      "configuration": {
+        "inbound_permissions": [
+          {
+            "protocol": "tcp",
+            "from_port": 22,
+            "to_port": 22,
+            "ipv4_ranges": ["10.0.1.0/24"],
+            "ipv6_ranges": []
+          }
+        ]
+      }
+    },
+    {
+      "resource_id": "arn:aws:s3:::demo-public-backups-bucket",
+      "resource_type": "aws.s3.bucket",
+      "name": "demo-public-backups-bucket",
+      "region": "us-east-1",
+      "configuration": {
+        "public_access_block": {
+          "block_public_acls": false,
+          "ignore_public_acls": false,
+          "block_public_policy": false,
+          "restrict_public_buckets": false
+        },
+        "acl": "public-read",
+        "policy_allows_public": true
+      }
+    },
+    {
+      "resource_id": "arn:aws:s3:::demo-private-logs-bucket",
+      "resource_type": "aws.s3.bucket",
+      "name": "demo-private-logs-bucket",
+      "region": "us-east-1",
+      "configuration": {
+        "public_access_block": {
+          "block_public_acls": true,
+          "ignore_public_acls": true,
+          "block_public_policy": true,
+          "restrict_public_buckets": true
+        },
+        "acl": "private",
+        "policy_allows_public": false
+      }
+    },
+    {
+      "resource_id": "arn:aws:iam::000000000000-demo:policy/DemoOverPermissiveAdmin",
+      "resource_type": "aws.iam.policy",
+      "name": "DemoOverPermissiveAdmin",
+      "region": "global",
+      "configuration": {
+        "statements": [
+          {
+            "sid": "AllowEverything",
+            "effect": "Allow",
+            "actions": ["*"],
+            "resources": ["*"],
+            "conditions": {}
+          }
+        ]
+      }
+    }
+  ]
+}
